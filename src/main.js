@@ -20,16 +20,16 @@ document.querySelector('#app').innerHTML = `
 
 // Create background spheres
 const spheresContainer = document.getElementById('background-spheres');
-for (let i = 0; i < 12; i++) {
+for (let i = 0; i < 6; i++) {
   const sphere = document.createElement('div');
   sphere.className = 'sphere';
   sphere.style.left = Math.random() * 100 + '%';
   sphere.style.top = Math.random() * 100 + '%';
-  sphere.style.width = (30 + Math.random() * 80) + 'px';
+  sphere.style.width = (400 + Math.random() * 600) + 'px';
   sphere.style.height = sphere.style.width;
-  sphere.dataset.speedY = (Math.random() - 0.5) * 0.3;
-  sphere.dataset.speedX = (Math.random() - 0.5) * 0.1;
-  sphere.dataset.speedScale = 0.95 + Math.random() * 0.1;
+  sphere.dataset.speedY = (Math.random() - 0.5) * 0.2;
+  sphere.dataset.speedX = (Math.random() - 0.5) * 0.05;
+  sphere.dataset.speedScale = 0.98 + Math.random() * 0.04;
   spheresContainer.appendChild(sphere);
 }
 
