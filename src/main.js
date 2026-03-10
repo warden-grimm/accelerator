@@ -2,6 +2,7 @@ import './style.css'
 import { marked } from 'marked';
 
 document.querySelector('#app').innerHTML = `
+  <div id="background-spheres"></div>
   <div id="progress-bar"></div>
   <nav id="section-nav"></nav>
   <main id="scroll-container"></main>
@@ -16,6 +17,21 @@ document.querySelector('#app').innerHTML = `
     </div>
   </div>
 `;
+
+// Create background spheres
+const spheresContainer = document.getElementById('background-spheres');
+for (let i = 0; i < 12; i++) {
+  const sphere = document.createElement('div');
+  sphere.className = 'sphere';
+  sphere.style.left = Math.random() * 100 + '%';
+  sphere.style.top = Math.random() * 100 + '%';
+  sphere.style.width = (30 + Math.random() * 80) + 'px';
+  sphere.style.height = sphere.style.width;
+  sphere.dataset.speedY = (Math.random() - 0.5) * 0.3;
+  sphere.dataset.speedX = (Math.random() - 0.5) * 0.1;
+  sphere.dataset.speedScale = 0.95 + Math.random() * 0.1;
+  spheresContainer.appendChild(sphere);
+}
 
 let sections = [];
 let markdownText = '';
@@ -78,6 +94,15 @@ function updateSections() {
         } else {
             section.classList.remove('visible');
         }
+    });
+
+    // Update sphere positions
+    const spheres = document.querySelectorAll('.sphere');
+    spheres.forEach(sphere => {
+        const y = scrollTop * parseFloat(sphere.dataset.speedY);
+        const x = scrollTop * parseFloat(sphere.dataset.speedX);
+        const scale = parseFloat(sphere.dataset.speedScale);
+        sphere.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
     });
 }
 
