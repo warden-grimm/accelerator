@@ -46,13 +46,13 @@ let markdownText = '';
 async function loadSummary() {
     const response = await fetch('summary.md');
     markdownText = await response.text();
-    const parts = markdownText.split(/^---$/gm).filter(p => p.trim());
+    const parts = markdownText.split('---').filter(p => p.trim());
     const scrollContainer = document.getElementById('scroll-container');
     const sectionNav = document.getElementById('section-nav');
     sections = parts.map((part, i) => {
         const html = marked.parse(part);
         const div = document.createElement('div');
-        div.className = 'section';        if (i === 0) div.classList.add('visible'); // Make hero visible immediately        div.innerHTML = html;
+        div.className = 'section';        if (i === 0) div.classList.add('visible'); // Make hero visible immediately        div.innerHTML = html || part; // fallback to raw text if parsing fails
         div.id = `section-${i}`;
         scrollContainer.appendChild(div);
         // Nav dot
