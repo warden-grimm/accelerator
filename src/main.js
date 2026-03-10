@@ -21,7 +21,7 @@ let sections = [];
 let markdownText = '';
 
 async function loadSummary() {
-    const response = await fetch('/summary.md');
+    const response = await fetch('summary.md');
     markdownText = await response.text();
     const parts = markdownText.split(/^---$/gm).filter(p => p.trim());
     const scrollContainer = document.getElementById('scroll-container');
