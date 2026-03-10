@@ -20,15 +20,22 @@ document.querySelector('#app').innerHTML = `
 
 // Create background spheres
 const spheresContainer = document.getElementById('background-spheres');
-for (let i = 0; i < 6; i++) {
+for (let i = 0; i < 4; i++) {
   const sphere = document.createElement('div');
   sphere.className = 'sphere';
-  sphere.style.left = Math.random() * 100 + '%';
-  sphere.style.top = Math.random() * 100 + '%';
-  sphere.style.width = (400 + Math.random() * 600) + 'px';
+  // Position in different quadrants to avoid overlap
+  const quadrant = i % 4;
+  let left, top;
+  if (quadrant === 0) { left = Math.random() * 40 + 5; top = Math.random() * 40 + 5; }
+  else if (quadrant === 1) { left = Math.random() * 40 + 55; top = Math.random() * 40 + 5; }
+  else if (quadrant === 2) { left = Math.random() * 40 + 5; top = Math.random() * 40 + 55; }
+  else { left = Math.random() * 40 + 55; top = Math.random() * 40 + 55; }
+  sphere.style.left = left + '%';
+  sphere.style.top = top + '%';
+  sphere.style.width = (300 + Math.random() * 400) + 'px';
   sphere.style.height = sphere.style.width;
-  sphere.dataset.speedY = (Math.random() - 0.5) * 0.2;
-  sphere.dataset.speedX = (Math.random() - 0.5) * 0.05;
+  sphere.dataset.speedY = (Math.random() - 0.5) * 0.15;
+  sphere.dataset.speedX = (Math.random() - 0.5) * 0.03;
   sphere.dataset.speedScale = 0.98 + Math.random() * 0.04;
   spheresContainer.appendChild(sphere);
 }
@@ -45,8 +52,7 @@ async function loadSummary() {
     sections = parts.map((part, i) => {
         const html = marked.parse(part);
         const div = document.createElement('div');
-        div.className = 'section';
-        div.innerHTML = html;
+        div.className = 'section';        if (i === 0) div.classList.add('visible'); // Make hero visible immediately        div.innerHTML = html;
         div.id = `section-${i}`;
         scrollContainer.appendChild(div);
         // Nav dot
