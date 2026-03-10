@@ -102,3 +102,5 @@ Your site will be available at `https://yourusername.github.io/repository-name/`
 ## License
 
 MIT License - feel free to use and modify for your projects.
+
+*Last updated: March 10, 2026*
