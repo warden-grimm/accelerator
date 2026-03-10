@@ -50,9 +50,9 @@ async function loadSummary() {
     const scrollContainer = document.getElementById('scroll-container');
     const sectionNav = document.getElementById('section-nav');
     sections = parts.map((part, i) => {
-        const html = marked.parse(part);
+        const html = marked(part);
         const div = document.createElement('div');
-        div.className = 'section';        if (i === 0) div.classList.add('visible'); // Make hero visible immediately        div.innerHTML = html || part; // fallback to raw text if parsing fails
+        div.className = 'section';        if (i === 0) div.classList.add('visible'); // Make hero visible immediately        div.innerHTML = html;
         div.id = `section-${i}`;
         scrollContainer.appendChild(div);
         // Nav dot
