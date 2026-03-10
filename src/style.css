@@ -1,0 +1,289 @@
+/* Dark theme with architectural motifs */
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+    line-height: 1.4;
+}
+
+/* Subtle background layers */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.02) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.01) 50%, transparent 51%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+#scroll-container {
+    position: relative;
+}
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 6rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(60px) scale(0.98);
+    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.section h1 {
+    font-size: 5rem;
+    font-weight: 200;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.section h2 {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.section h3 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: #ccc;
+}
+
+.section p {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 900px;
+    font-weight: 300;
+}
+
+.section ul, .section ol {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 900px;
+    font-weight: 300;
+}
+
+.section li {
+    margin-bottom: 0.8rem;
+    padding-left: 1rem;
+}
+
+.section strong {
+    font-weight: 500;
+    color: #fff;
+}
+
+/* Progress bar */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #fff 0%, #ccc 100%);
+    z-index: 1000;
+    transition: width 0.1s ease;
+}
+
+/* Nav */
+#section-nav {
+    position: fixed;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.nav-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    margin: 0.8rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-dot:hover {
+    background: rgba(255,255,255,0.5);
+    transform: scale(1.2);
+}
+
+.nav-dot.active {
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+/* Controls */
+#controls {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    z-index: 1000;
+    display: flex;
+    gap: 1rem;
+}
+
+button {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: inherit;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.4);
+}
+
+/* Modal */
+#markdown-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#markdown-modal:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: #111;
+    padding: 3rem;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+}
+
+#close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+pre {
+    white-space: pre-wrap;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #ccc;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .section {
+        padding: 3rem 4rem;
+    }
+    .section h1 {
+        font-size: 4rem;
+    }
+    .section h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 2rem 2rem;
+        min-height: auto;
+        padding-bottom: 4rem;
+    }
+    .section h1 {
+        font-size: 3rem;
+    }
+    .section h2 {
+        font-size: 2rem;
+    }
+    .section h3 {
+        font-size: 1.5rem;
+    }
+    .section p, .section ul, .section ol {
+        font-size: 1.1rem;
+    }
+    #section-nav {
+        right: 1.5rem;
+    }
+    #controls {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    button {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+    .modal-content {
+        padding: 2rem;
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .section {
+        transition: none;
+    }
+    .nav-dot {
+        transition: none;
+    }
+    button {
+        transition: none;
+    }
+    #markdown-modal {
+        transition: none;
+    }
+}
