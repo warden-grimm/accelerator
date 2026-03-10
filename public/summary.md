@@ -6,7 +6,7 @@ March 5, 2026
  
 # Overview
  
-The South Central Digital Platform Accelerator Retreat convened design leaders, technologists, and practitioners to examine how artificial intelligence and digital platforms can accelerate architectural practice. The central premise of the retreat was that **the goal is not transition but acceleration**—leveraging emerging technologies to amplify design capability, compress timelines, and expand the value architects deliver to clients. :contentReference[oaicite:1]{index=1}  
+The South Central Digital Platform Accelerator Retreat convened design leaders, technologists, and practitioners to examine how artificial intelligence and digital platforms can accelerate architectural practice. The central premise of the retreat was that **the goal is not transition but acceleration**—leveraging emerging technologies to amplify design capability, compress timelines, and expand the value architects deliver to clients.  
  
 The workshop explored three primary dimensions of transformation:
  
@@ -14,7 +14,7 @@ The workshop explored three primary dimensions of transformation:
 2. **Storytelling & Client Communication** – enhancing how ideas are communicated and experienced.
 3. **Knowledge, Delivery & Practice Infrastructure** – rethinking internal systems, data, and workflows to support an AI-enabled practice.
  
-The retreat emphasized that the architectural profession has historically increased productivity through technological adoption—from CAD to BIM—and that **AI represents the next major productivity shift**. However, increased productivity alone does not increase value. The future success of the profession depends on **reframing architectural services around outcomes, insight, and decision-making**, rather than simply deliverables. :contentReference[oaicite:2]{index=2}  
+The retreat emphasized that the architectural profession has historically increased productivity through technological adoption—from CAD to BIM—and that **AI represents the next major productivity shift**. However, increased productivity alone does not increase value. The future success of the profession depends on **reframing architectural services around outcomes, insight, and decision-making**, rather than simply deliverables.  
  
 ---
  
@@ -82,7 +82,7 @@ Accelerated workflow prototype:
 4. Generate structured prompts automatically  
 5. Produce batch styled render variations
  
-The prototype demonstrating this workflow was built in **a single afternoon**, illustrating how modern frameworks and AI-assisted coding enable rapid development of custom design tools. :contentReference[oaicite:3]{index=3}  
+The prototype demonstrating this workflow was built in **a single afternoon**, illustrating how modern frameworks and AI-assisted coding enable rapid development of custom design tools.  
  
 ---
  
@@ -101,7 +101,7 @@ These include:
 - knowledge retrieval
 - internal communication.
  
-Survey results from technical directors across the firm indicate that **spec writing, documentation, and analysis are among the most promising AI opportunities**. :contentReference[oaicite:4]{index=4}  
+Survey results from technical directors across the firm indicate that **spec writing, documentation, and analysis are among the most promising AI opportunities**.  
  
 ---
  
@@ -257,7 +257,7 @@ The Innovation Tracker framework allows teams to:
 - allocate investment
 - scale successful initiatives across offices.
  
-This ensures grassroots innovation is recognized, resourced, and expanded. :contentReference[oaicite:5]{index=5}  
+This ensures grassroots innovation is recognized, resourced, and expanded.  
  
  
  
