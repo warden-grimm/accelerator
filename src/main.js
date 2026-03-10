@@ -44,25 +44,33 @@ let sections = [];
 let markdownText = '';
 
 async function loadSummary() {
-    const response = await fetch('summary.md');
-    markdownText = await response.text();
-    const parts = markdownText.split('---').filter(p => p.trim());
-    const scrollContainer = document.getElementById('scroll-container');
-    const sectionNav = document.getElementById('section-nav');
-    sections = parts.map((part, i) => {
-        const html = marked(part);
-        const div = document.createElement('div');
-        div.className = 'section';        if (i === 0) div.classList.add('visible'); // Make hero visible immediately        div.innerHTML = html;
-        div.id = `section-${i}`;
-        scrollContainer.appendChild(div);
-        // Nav dot
-        const dot = document.createElement('div');
-        dot.className = 'nav-dot';
-        dot.addEventListener('click', () => scrollToSection(i));
-        sectionNav.appendChild(dot);
-        return div;
-    });
-    updateNav();
+    try {
+        const response = await fetch('summary.md');
+        if (!response.ok) throw new Error('Fetch failed: ' + response.status);
+        markdownText = await response.text();
+        const parts = markdownText.split('---').filter(p => p.trim());
+        const scrollContainer = document.getElementById('scroll-container');
+        const sectionNav = document.getElementById('section-nav');
+        sections = parts.map((part, i) => {
+            const html = marked(part);
+            const div = document.createElement('div');
+            div.className = 'section';
+            if (i === 0) div.classList.add('visible');
+            div.innerHTML = html;
+            div.id = `section-${i}`;
+            scrollContainer.appendChild(div);
+            // Nav dot
+            const dot = document.createElement('div');
+            dot.className = 'nav-dot';
+            dot.addEventListener('click', () => scrollToSection(i));
+            sectionNav.appendChild(dot);
+            return div;
+        });
+        updateNav();
+    } catch (e) {
+        const scrollContainer = document.getElementById('scroll-container');
+        scrollContainer.innerHTML = '<div class="section visible" style="color: white;"><h1>Error Loading Content</h1><p>' + e.message + '</p><p>Parts: ' + (markdownText ? 'loaded' : 'not loaded') + '</p></div>';
+    }
 }
 
 function scrollToSection(index) {
